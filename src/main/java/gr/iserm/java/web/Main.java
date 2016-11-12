@@ -1,6 +1,7 @@
 package gr.iserm.java.web;
 
 import org.wildfly.swarm.Swarm;
+import org.wildfly.swarm.io.IOFraction;
 import org.wildfly.swarm.undertow.UndertowFraction;
 
 public class Main {
@@ -8,7 +9,11 @@ public class Main {
         UndertowFraction undertowFraction = UndertowFraction
                 .createDefaultFraction().httpPort(8080);
 
-        Swarm swarm = new Swarm().fraction(undertowFraction);
+        IOFraction ioFraction = new IOFraction().applyDefaults();
+        ioFraction.subresources().worker("default").taskMaxThreads(1);
+
+        Swarm swarm = new Swarm().fraction(undertowFraction)
+                .fraction(ioFraction);
 
         swarm.start();
 
