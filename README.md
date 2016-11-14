@@ -1,7 +1,7 @@
 # servlet-swarm
-A wildfly-swarm example with Undertow and Spring 3.1
+A wildfly-swarm example with Undertow and Spring 3
 
-This example demos the asynchronous Servlet 3.1 API and the use of RxJava 1 for async response generation.
+This example demos the asynchronous Servlet 3 API and the use of RxJava 1 for async response generation.
 
 # run with
 mvn package -Prun
